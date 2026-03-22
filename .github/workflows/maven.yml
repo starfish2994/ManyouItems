@@ -36,7 +36,6 @@ jobs:
           -DartifactId=worldguard-bukkit \
           -Dversion=7.0.2-SNAPSHOT \
           -Dpackaging=jar \
-          -Dclassifier=bukkit \
           -Dscope=provided
 
         # 安装worldguard-core
