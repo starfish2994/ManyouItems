@@ -27,6 +27,63 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: maven
+    - name: Install local dependencies (worldguard/worldedit)
+      run: |
+        # 安装worldguard-bukkit（路径改为lib/xxx.jar）
+        mvn install:install-file \
+          -Dfile=lib/worldguard-bukkit-7.0.2-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldguard \
+          -DartifactId=worldguard-bukkit \
+          -Dversion=7.0.2-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dclassifier=bukkit \
+          -Dscope=provided
+
+        # 安装worldguard-core
+        mvn install:install-file \
+          -Dfile=lib/worldguard-core-7.0.2-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldguard \
+          -DartifactId=worldguard-core \
+          -Dversion=7.0.2-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dscope=provided
+
+        # 安装worldguard-libs core
+        mvn install:install-file \
+          -Dfile=lib/core-7.0.2-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldguard.worldguard-libs \
+          -DartifactId=core \
+          -Dversion=7.0.2-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dscope=provided
+
+        # 安装worldedit-bukkit
+        mvn install:install-file \
+          -Dfile=lib/worldedit-bukkit-7.1.0-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldedit \
+          -DartifactId=worldedit-bukkit \
+          -Dversion=7.1.0-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dclassifier=bukkit \
+          -Dscope=provided
+
+        # 安装worldedit-core
+        mvn install:install-file \
+          -Dfile=lib/worldedit-core-7.1.0-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldedit \
+          -DartifactId=worldedit-core \
+          -Dversion=7.1.0-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dscope=provided
+
+        # 安装worldedit-libs core
+        mvn install:install-file \
+          -Dfile=lib/core-7.1.0-SNAPSHOT.jar \
+          -DgroupId=com.sk89q.worldedit.worldedit-libs \
+          -DartifactId=core \
+          -Dversion=7.1.0-SNAPSHOT \
+          -Dpackaging=jar \
+          -Dscope=provided
     - name: Build with Maven
       run: mvn -B package --file pom.xml
 
